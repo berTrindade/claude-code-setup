@@ -9,3 +9,6 @@
 - Implementation examples (sanitized)
 - Workflow documentation
 - Tips and troubleshooting guides
+
+### Enhanced
+- Terraform patterns documentation now explicitly references `/terraform-style-guide` and `/terraform-skill` skills
