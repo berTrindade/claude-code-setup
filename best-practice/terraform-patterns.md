@@ -38,8 +38,14 @@ name = "${local.prefix}-api-health"
 ## Style Guide Compliance
 
 All Terraform code follows:
-- **HashiCorp Terraform Style Guide**
-- **terraform-skill best practices**
+- **HashiCorp Terraform Style Guide** (use `/terraform-style-guide` skill)
+- **terraform-skill best practices** (use `/terraform-skill` skill)
+
+**Using Claude Skills for Terraform:**
+
+When working with Terraform code, Claude automatically uses:
+- `/terraform-style-guide` - HashiCorp's official style conventions (indentation, naming, block ordering)
+- `/terraform-skill` - Testing strategies, module patterns, CI/CD, security best practices
 
 **Verification checklist:**
 - Code formatted with `terraform fmt`
@@ -48,6 +54,8 @@ All Terraform code follows:
 - Naming conventions (lowercase with underscores)
 - Variable/output descriptions required
 - Prefer `for_each` over `count` when appropriate
+- Verify against `/terraform-style-guide` skill
+- Verify against `/terraform-skill` skill
 
 ## Infrastructure Safety Checks
 

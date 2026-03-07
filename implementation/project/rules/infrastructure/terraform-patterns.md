@@ -4,6 +4,10 @@ Reference patterns and proven practices.
 
 **Style Guide Compliance:** All code follows HashiCorp's official Terraform style guide and terraform-skill best practices.
 
+**Claude Skills:** When working with Terraform code, Claude uses:
+- `/terraform-style-guide` - HashiCorp's official style conventions
+- `/terraform-skill` - Testing strategies, module patterns, CI/CD, security
+
 ## Module Selection Strategy
 
 **Always favor official Terraform Registry modules over custom code.**
