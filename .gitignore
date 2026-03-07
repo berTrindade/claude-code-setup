@@ -1,0 +1,53 @@
+# Sensitive files
+*.env
+*.env.local
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Secrets and tokens
+**/secrets/
+**/tokens/
+**/*secret*
+**/*token*
+**/*password*
+**/*credential*
+
+# Personal information
+**/personal/
+**/*personal*
+
+# Temporary files
+*.tmp
+*.log
+.DS_Store
+*.swp
+*.swo
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+
+# Claude Code specific
+.claude/plans/
+.claude/.mcp.json.local
+
+# Node modules (if any examples include them)
+node_modules/
+package-lock.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfplan
+.terraform.lock.hcl

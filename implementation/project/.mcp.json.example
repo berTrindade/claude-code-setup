@@ -1,0 +1,27 @@
+{
+  "mcpServers": {
+    "postgres": {
+      "command": "npx",
+      "args": ["-y", "@zeddotdev/postgres-context-server", "${DATABASE_URL}"]
+    },
+    "posthog": {
+      "command": "npx",
+      "args": ["-y", "mcp-remote@latest", "https://mcp.posthog.com/sse"],
+      "env": {
+        "POSTHOG_PERSONAL_API_KEY": "${POSTHOG_PERSONAL_API_KEY}"
+      }
+    },
+    "terraform": {
+      "command": "docker",
+      "args": ["run", "--rm", "-i", "hashicorp/terraform-mcp-server:latest"]
+    },
+    "expo": {
+      "command": "npx",
+      "args": ["-y", "expo-mcp@latest", "--dev-server-url", "http://localhost:8081"]
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@playwright/mcp@latest"]
+    }
+  }
+}
