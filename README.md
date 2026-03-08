@@ -15,9 +15,9 @@ My personal Claude Code configuration and workflows, shared for team collaborati
 
 | Feature | Location | Description |
 |---------|----------|-------------|
-| **Commands** | `.claude/commands/<name>.md` | Entry-point prompts for workflows — invoke with `/command-name` |
+| **Commands** | `.claude/commands/<name>.md` | Entry-point prompts for workflows |
 | **Sub-Agents** | `.claude/agents/<name>.md` | Custom agents with tools, permissions, and model |
-| **Skills** | `.claude/skills/<name>/SKILL.md` | Reusable knowledge, workflows, and slash commands |
+| **Skills** | `.claude/skills/<name>/SKILL.md` | Reusable knowledge and workflows |
 | **Workflows** | `.claude/WORKFLOWS.md` | Daily workflow patterns |
 | **Hooks** | `.claude/hooks/` | Deterministic scripts on specific events |
 | **MCP Servers** | `.claude/.mcp.json` | Model Context Protocol connections |
@@ -41,33 +41,45 @@ My personal Claude Code configuration and workflows, shared for team collaborati
 
 ```
 claude-code-setup/
-├── README.md                    # This file
-├── LICENSE                      # MIT License
+├── README.md                    # Main documentation with concepts table
+├── LICENSE                      # MIT or similar
 ├── .gitignore                  # Exclude sensitive files
 ├── setup/                      # Setup instructions
 │   ├── global-setup.md        # How to set up ~/.claude/
 │   ├── project-setup.md       # How to set up .claude/ in projects
 │   └── prerequisites.md        # Required tools and versions
 ├── best-practice/              # Best practices documentation
-│   ├── commands.md            # Command patterns
-│   ├── agents.md              # Agent configuration
+│   ├── commands.md            # Command patterns and examples
+│   ├── agents.md              # Agent configuration patterns
+│   ├── skills.md              # Skill structure and usage
 │   ├── workflows.md           # Workflow patterns
-│   ├── hooks.md               # Hook patterns
-│   ├── mcp-servers.md         # MCP configuration
+│   ├── hooks.md               # Hook examples and patterns
+│   ├── mcp-servers.md         # MCP server configuration
 │   ├── terraform-patterns.md  # Terraform-specific patterns
 │   └── git-workflow.md        # Git workflow conventions
 ├── implementation/             # Actual implementation examples
 │   ├── global/                # ~/.claude/ structure (sanitized)
+│   │   ├── commands/         # Example commands
+│   │   ├── agents/            # Example agents
+│   │   ├── rules/             # Example rules
+│   │   └── settings.json      # Example settings (no secrets)
 │   └── project/               # .claude/ structure (sanitized)
+│       ├── commands/          # Project commands
+│       ├── agents/            # Project agents
+│       ├── rules/              # Project rules
+│       ├── skills/            # Project skills
+│       ├── hooks/             # Project hooks
+│       └── settings.local.json # Example project settings
 ├── workflows/                  # Workflow documentation
-│   ├── ticket-workflow.md     # Ticket workflow
-│   ├── infrastructure-workflow.md # Infrastructure workflow
-│   └── pr-workflow.md         # PR workflow
+│   ├── ticket-workflow.md     # How to work on tickets
+│   ├── infrastructure-workflow.md # Infrastructure changes workflow
+│   └── pr-workflow.md         # PR creation and review workflow
 ├── tips/                       # Tips and tricks
 │   ├── debugging.md           # Debugging practices
-│   └── troubleshooting.md     # Common issues
+│   ├── performance.md         # Performance optimization
+│   └── troubleshooting.md     # Common issues and solutions
 └── changelog/                  # Change history
-    └── CHANGELOG.md            # Track improvements
+    └── setup-changes.md        # Track setup improvements
 ```
 
 ## Contributing
