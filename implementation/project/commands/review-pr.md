@@ -1,8 +1,5 @@
 ---
 description: Review a teammate's PR. Usage: /review-pr <number>
-argument-hint: [pr-number]
-allowed-tools: Read, Bash, Grep, Glob
-model: sonnet
 ---
 
 Review the pull request provided in the arguments (e.g. `/review-pr 42`).
@@ -20,8 +17,24 @@ Understand:
 
 ## Step 2 — Get the code
 
+First, fetch the latest changes from the remote:
+
 ```bash
-gh pr checkout <number>
+git fetch origin
+```
+
+Then checkout the PR branch (this will pull the latest changes):
+
+```bash
+gh pr checkout <number> --force
+```
+
+The `--force` flag ensures that if the branch already exists locally, it will be reset to match the latest state of the PR.
+
+Verify you're on the correct branch:
+
+```bash
+git branch --show-current
 ```
 
 ## Step 2.5 — Identify tools/services and fetch documentation
