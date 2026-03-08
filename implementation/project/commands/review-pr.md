@@ -1,5 +1,8 @@
 ---
 description: Review a teammate's PR. Usage: /review-pr <number>
+argument-hint: [pr-number]
+allowed-tools: Read, Bash, Grep, Glob
+model: sonnet
 ---
 
 Review the pull request provided in the arguments (e.g. `/review-pr 42`).
@@ -43,22 +46,9 @@ Suggestion: how to fix it
 
 End with a verdict: **Approve / Request Changes / Comment**.
 
-## Step 5 — Post review (optional)
+**Important:** Output the review findings to the session only. Do NOT post anything to GitHub or the PR. The review is for the user's reference only.
 
-If the user wants to post comments to GitHub:
-
-```bash
-# Approve
-gh pr review <number> --approve --body "<summary>"
-
-# Request changes
-gh pr review <number> --request-changes --body "<summary>"
-
-# Comment only
-gh pr review <number> --comment --body "<summary>"
-```
-
-## Step 6 — Return to your branch
+## Step 5 — Return to your branch
 
 ```bash
 git checkout -

@@ -53,8 +53,10 @@ Use `/review-pr <number>`:
 2. Checks out branch locally
 3. Full diff review via `code-reviewer` agent
 4. Findings grouped by file: CRITICAL → HIGH → LOW
-5. Optionally posts `gh pr review` comment to GitHub
+5. Outputs review findings to session only (does NOT post to GitHub)
 6. Returns you to your previous branch
+
+**Note:** The review output is for your reference only. It will not post any comments or reviews to GitHub automatically.
 
 ## Conventions
 
