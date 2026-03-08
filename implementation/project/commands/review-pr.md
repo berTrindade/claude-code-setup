@@ -78,6 +78,12 @@ git diff master...HEAD
 
 Invoke the **code-reviewer** agent on the full diff. Read the changed files fully — not just the diff lines.
 
+**Focus on PR commits only:**
+- Review only the files and changes in the PR branch commits
+- Do not explore unrelated parts of the codebase
+- Only read additional files if you need context to understand something specific in the commits (e.g., understanding how a changed function is used, checking imports, verifying type definitions)
+- Stay within the scope of what was actually changed in this PR
+
 **Use the documentation fetched in Step 2.5** to verify:
 - API usage matches latest documentation
 - Patterns follow current best practices
