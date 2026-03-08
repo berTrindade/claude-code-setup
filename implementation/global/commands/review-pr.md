@@ -89,14 +89,69 @@ Invoke the **code-reviewer** agent on the full diff. Read the changed files full
 
 ## Step 4 — Output findings
 
+**Format all comments using [Conventional Comments](https://conventionalcomments.org/) format.**
+
 Group by file. Severity first: CRITICAL → HIGH → LOW.
 
-For each issue:
+### Comment Format
+
+Use the Conventional Comments format for all review comments:
+
 ```
-[CRITICAL|HIGH|LOW] Title
-File: path:line
-Issue: what's wrong
-Suggestion: how to fix it
+<label> [decorations]: <subject>
+
+[discussion with citations/references]
+```
+
+**Labels to use:**
+- `issue` - Problems that need fixing (use `(blocking)` decoration for CRITICAL/HIGH)
+- `suggestion` - Proposed improvements (use `(blocking)` or `(non-blocking)` as appropriate)
+- `nitpick` - Trivial preference-based requests (always `(non-blocking)`)
+- `praise` - Positive feedback (always include at least one per review)
+- `question` - Need clarification (use `(non-blocking)` if not blocking)
+- `todo` - Small necessary changes
+- `chore` - Process-related tasks
+- `note` - Non-blocking informational comments
+
+**Decorations:**
+- `(blocking)` - Must be resolved before merge
+- `(non-blocking)` - Can be addressed later
+- `(if-minor)` - Only if changes are minor
+- Domain-specific: `(security)`, `(test)`, `(ux)`, `(performance)`, `(api)`, etc.
+
+### Example Comment Format
+
+```
+**issue (security,blocking):** Hardcoded API key detected
+
+This exposes credentials in version control. Use environment variables or secrets management instead.
+
+References:
+- [OWASP: Secrets Management](https://owasp.org/www-community/vulnerabilities/Use_of_hard-coded_cryptographic_key)
+- [AWS Secrets Manager Best Practices](https://docs.aws.amazon.com/secretsmanager/latest/userguide/best-practices.html)
+
+File: `src/config.ts:42`
+```
+
+**Always include citations/references when possible:**
+- Link to official documentation (Strapi, AWS, Terraform, React Native, etc.)
+- Reference security best practices (OWASP, CWE, etc.)
+- Cite performance guides (React performance, database optimization, etc.)
+- Link to relevant GitHub issues, RFCs, or ADRs
+- Reference style guides or coding standards
+
+For each finding:
+
+```
+**<label> (<decorations>):** <subject>
+
+<discussion with context and reasoning>
+
+References:
+- [Title](URL) - Brief description
+- [Title](URL) - Brief description
+
+File: `path:line`
 ```
 
 End with a verdict: **Approve / Request Changes / Comment**.
