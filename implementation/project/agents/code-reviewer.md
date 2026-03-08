@@ -77,7 +77,7 @@ Map severity to Conventional Comments labels:
 1. **Label** - One of: `issue`, `suggestion`, `nitpick`, `praise`, `question`, `todo`, `chore`, `note`
 2. **Decorations** - Include `(blocking)` or `(non-blocking)` plus domain-specific like `(security)`, `(test)`, `(performance)`, `(api)`, `(ux)`
 3. **Subject** - Clear, concise description
-4. **Discussion** - Context, reasoning, and "why"
+4. **Discussion** - **Casual tone, max 2 lines, concise. No em dashes or colons.** Keep it friendly and conversational.
 5. **References** - **ALWAYS include citations** when possible:
    - Official documentation URLs (Strapi, AWS, Terraform, React Native, Express, PostgreSQL)
    - Security best practices (OWASP, CWE, security advisories)
@@ -85,6 +85,14 @@ Map severity to Conventional Comments labels:
    - Style guides (Terraform Style Guide, React best practices)
    - Relevant GitHub issues, RFCs, ADRs, or blog posts
 6. **File location** - `path:line` format
+
+### Writing Style
+
+- **Tone:** Casual and friendly, like talking to a teammate
+- **Length:** Maximum 2 lines for discussion text
+- **Conciseness:** Get to the point quickly, no fluff
+- **Punctuation:** Avoid em dashes (—) and colons (:) in discussion text
+- **Examples:** Use "like this" instead of "like this—" or "like this:"
 
 ### Examples
 
@@ -95,7 +103,7 @@ Map severity to Conventional Comments labels:
 This exposes credentials in version control. Use environment variables or AWS Secrets Manager instead.
 
 References:
-- [OWASP: Use of Hard-coded Cryptographic Key](https://owasp.org/www-community/vulnerabilities/Use_of_hard-coded_cryptographic_key)
+- [OWASP Use of Hard-coded Cryptographic Key](https://owasp.org/www-community/vulnerabilities/Use_of_hard-coded_cryptographic_key)
 - [AWS Secrets Manager Best Practices](https://docs.aws.amazon.com/secretsmanager/latest/userguide/best-practices.html)
 
 File: `src/config.ts:42`
@@ -105,11 +113,11 @@ File: `src/config.ts:42`
 ```
 **suggestion (performance,blocking):** N+1 query pattern detected
 
-This loop executes a database query for each iteration. Use a single query with JOIN or batch fetching instead.
+This loop runs a query for each iteration. Use a single JOIN or batch fetch instead.
 
 References:
-- [PostgreSQL: Avoiding N+1 Queries](https://www.postgresql.org/docs/current/tutorial-join.html)
-- [Prisma: N+1 Problem](https://www.prisma.io/docs/guides/performance-and-optimization/query-optimization#n1-problem)
+- [PostgreSQL Avoiding N+1 Queries](https://www.postgresql.org/docs/current/tutorial-join.html)
+- [Prisma N+1 Problem](https://www.prisma.io/docs/guides/performance-and-optimization/query-optimization#n1-problem)
 
 File: `src/services/users.ts:156`
 ```
@@ -118,22 +126,22 @@ File: `src/services/users.ts:156`
 ```
 **nitpick (non-blocking):** Inconsistent formatting
 
-This line uses double quotes while the rest of the file uses single quotes per project style guide.
+Double quotes here but the rest uses single quotes per style guide.
 
 References:
-- [Project Style Guide: `.prettierrc`](https://github.com/org/repo/blob/main/.prettierrc)
+- [Project Style Guide `.prettierrc`](https://github.com/org/repo/blob/main/.prettierrc)
 
 File: `src/components/Button.tsx:23`
 ```
 
 **Praise:**
 ```
-**praise:** Excellent error handling
+**praise:** Nice error handling
 
-This implementation properly handles edge cases and provides clear error messages. Great use of Zod for validation!
+Handles edge cases well and gives clear messages. Good use of Zod for validation.
 
 References:
-- [Zod: Error Handling](https://zod.dev/?id=error-handling)
+- [Zod Error Handling](https://zod.dev/?id=error-handling)
 
 File: `src/api/users.ts:89`
 ```

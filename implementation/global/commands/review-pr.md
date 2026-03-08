@@ -127,11 +127,19 @@ Use the Conventional Comments format for all review comments:
 This exposes credentials in version control. Use environment variables or secrets management instead.
 
 References:
-- [OWASP: Secrets Management](https://owasp.org/www-community/vulnerabilities/Use_of_hard-coded_cryptographic_key)
+- [OWASP Secrets Management](https://owasp.org/www-community/vulnerabilities/Use_of_hard-coded_cryptographic_key)
 - [AWS Secrets Manager Best Practices](https://docs.aws.amazon.com/secretsmanager/latest/userguide/best-practices.html)
 
 File: `src/config.ts:42`
 ```
+
+### Writing Style
+
+- **Tone:** Casual and friendly, like talking to a teammate
+- **Length:** Maximum 2 lines for discussion text
+- **Conciseness:** Get to the point quickly, no fluff
+- **Punctuation:** Avoid em dashes (—) and colons (:) in discussion text
+- **Examples:** Use "like this" instead of "like this—" or "like this:"
 
 **Always include citations/references when possible:**
 - Link to official documentation (Strapi, AWS, Terraform, React Native, etc.)
@@ -145,7 +153,7 @@ For each finding:
 ```
 **<label> (<decorations>):** <subject>
 
-<discussion with context and reasoning>
+<discussion - casual tone, max 2 lines, concise, no em dashes or colons>
 
 References:
 - [Title](URL) - Brief description
