@@ -54,3 +54,13 @@ Command: Presents plan to user
 - Code comments follow style guidelines
 - PR descriptions follow template and should be simple
 - Terraform patterns (favor registry modules, naming conventions, etc.)
+
+## Main Workflow Documentation
+
+See `implementation/project/WORKFLOWS.md` for the complete daily workflow patterns, including:
+- Occasion map (when to use which command)
+- Command → Agent → Skill orchestration pattern
+- Ticket workflow details
+- Infrastructure workflow details
+- PR workflow details
+- Conventions applied automatically

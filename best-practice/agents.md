@@ -55,3 +55,25 @@ background: false
 - **Visual distinction** - Use colors to distinguish agents in UI
 - **Memory scope** - Choose appropriate memory scope (project for project-specific, user for global)
 - **Tool restrictions** - Only grant necessary tools for security
+
+## Available Agents
+
+### Global Agents (`~/.claude/agents/`)
+
+See `implementation/global/agents/` for examples:
+- `build-error-resolver.md` - Fixes build/TypeScript errors
+- `code-reviewer.md` - Reviews code for quality and security
+- `e2e-runner.md` - E2E test specialist
+- `security-reviewer.md` - Security vulnerability detection
+
+### Project Agents (`.claude/agents/`)
+
+See `implementation/project/agents/` for examples:
+- `architect.md` - Software architecture specialist
+- `build-error-resolver.md` - Fix build errors
+- `code-reviewer.md` - Code quality reviewer
+- `database-reviewer.md` - Database specialist
+- `planner.md` - Planning agent
+- `refactor-cleaner.md` - Dead code cleanup
+- `security-reviewer.md` - Security reviewer
+- `tdd-guide.md` - TDD specialist

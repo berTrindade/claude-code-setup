@@ -39,3 +39,28 @@ Start working on ticket `<ticket-number>` from the board.
 - **Model selection** - Choose appropriate model (sonnet default, opus for complex planning)
 - **Step-by-step** - Break down into clear steps
 - **Reference rules** - Link to `.claude/rules/` for conventions
+
+## Available Commands
+
+### Global Commands (`~/.claude/commands/`)
+
+See `implementation/global/commands/` for examples:
+- `bug-fix.md` - Investigate and fix bugs
+- `hotfix.md` - Fast path for production issues
+- `review-pr.md` - Review teammate PRs
+- `spike.md` - Pure research and investigation
+- `verify.md` - Full pre-PR verification
+
+### Project Commands (`.claude/commands/`)
+
+See `implementation/project/commands/` for examples:
+- `bug-fix.md` - Investigate and fix bugs
+- `hotfix.md` - Production hotfix workflow
+- `plan.md` - Create phased implementation plan
+- `raise-pr.md` - Create PR following template
+- `refactor-clean.md` - Clean up dead code
+- `review-pr.md` - Review PRs
+- `spike.md` - Research and investigation
+- `start-ticket.md` - Start working on a ticket
+- `tdd.md` - TDD workflow
+- `verify.md` - Pre-PR verification

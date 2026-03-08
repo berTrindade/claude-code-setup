@@ -42,7 +42,7 @@ My personal Claude Code configuration and workflows, shared for team collaborati
 ```
 claude-code-setup/
 ├── README.md                    # Main documentation with concepts table
-├── LICENSE                      # MIT or similar
+├── LICENSE                      # MIT License
 ├── .gitignore                  # Exclude sensitive files
 ├── setup/                      # Setup instructions
 │   ├── global-setup.md        # How to set up ~/.claude/
@@ -57,19 +57,91 @@ claude-code-setup/
 │   ├── mcp-servers.md         # MCP server configuration
 │   ├── terraform-patterns.md  # Terraform-specific patterns
 │   └── git-workflow.md        # Git workflow conventions
-├── implementation/             # Actual implementation examples
-│   ├── global/                # ~/.claude/ structure (sanitized)
-│   │   ├── commands/         # Example commands
-│   │   ├── agents/            # Example agents
-│   │   ├── rules/             # Example rules
-│   │   └── settings.json      # Example settings (no secrets)
-│   └── project/               # .claude/ structure (sanitized)
-│       ├── commands/          # Project commands
-│       ├── agents/            # Project agents
-│       ├── rules/              # Project rules
-│       ├── skills/            # Project skills
-│       ├── hooks/             # Project hooks
-│       └── settings.local.json # Example project settings
+├── implementation/             # Actual implementation examples (sanitized)
+│   ├── global/                # ~/.claude/ structure
+│   │   ├── commands/         # Global commands (5 files)
+│   │   │   ├── bug-fix.md
+│   │   │   ├── hotfix.md
+│   │   │   ├── review-pr.md
+│   │   │   ├── spike.md
+│   │   │   └── verify.md
+│   │   ├── agents/            # Global agents (4 files)
+│   │   │   ├── build-error-resolver.md
+│   │   │   ├── code-reviewer.md
+│   │   │   ├── e2e-runner.md
+│   │   │   └── security-reviewer.md
+│   │   ├── rules/             # Global rules (4 files)
+│   │   │   ├── agents.md
+│   │   │   ├── git-workflow.md
+│   │   │   ├── hooks.md
+│   │   │   └── performance.md
+│   │   ├── skills/            # Global skills (1 file)
+│   │   │   └── codemap-updater.md
+│   │   ├── CLAUDE.md          # Global personal instructions
+│   │   ├── .mcp.json.example  # Example MCP configuration
+│   │   └── settings.json.example # Example settings
+│   └── project/               # .claude/ structure
+│       ├── commands/          # Project commands (10 files)
+│       │   ├── bug-fix.md
+│       │   ├── hotfix.md
+│       │   ├── plan.md
+│       │   ├── raise-pr.md
+│       │   ├── refactor-clean.md
+│       │   ├── review-pr.md
+│       │   ├── spike.md
+│       │   ├── start-ticket.md
+│       │   ├── tdd.md
+│       │   └── verify.md
+│       ├── agents/            # Project agents (8 files)
+│       │   ├── architect.md
+│       │   ├── build-error-resolver.md
+│       │   ├── code-reviewer.md
+│       │   ├── database-reviewer.md
+│       │   ├── planner.md
+│       │   ├── refactor-cleaner.md
+│       │   ├── security-reviewer.md
+│       │   └── tdd-guide.md
+│       ├── rules/              # Project rules (20 files)
+│       │   ├── workflows.md
+│       │   ├── code-style.md
+│       │   ├── README.md
+│       │   ├── advanced-features.md
+│       │   ├── built-in-features.md
+│       │   ├── cli-reference.md
+│       │   ├── mcp-servers.md
+│       │   ├── common/
+│       │   │   ├── git-workflow.md
+│       │   │   ├── security.md
+│       │   │   └── testing.md
+│       │   ├── typescript/
+│       │   │   ├── coding-style.md
+│       │   │   ├── patterns.md
+│       │   │   └── testing.md
+│       │   └── infrastructure/
+│       │       ├── README.md
+│       │       ├── secrets-management.md
+│       │       ├── style-verification.md
+│       │       ├── terraform.md
+│       │       ├── terraform-patterns.md
+│       │       ├── VERIFICATION_SUMMARY.md
+│       │       └── workflow-examples.md
+│       ├── skills/            # Project skills (3 files)
+│       │   ├── database-migrations.md
+│       │   ├── postgres-patterns.md
+│       │   └── example-skill/
+│       │       └── SKILL.md
+│       ├── hooks/             # Project hooks (3 files)
+│       │   ├── pre-tool-use/
+│       │   │   ├── dev-server-block.md
+│       │   │   └── git-push-reminder.md
+│       │   ├── post-tool-use/
+│       │   │   └── prettier-format.md
+│       │   └── stop/
+│       │       └── console-log-check.md
+│       ├── WORKFLOWS.md       # Main workflow documentation
+│       ├── CLAUDE.local.md    # Project personal instructions
+│       ├── .mcp.json.example  # Example MCP configuration
+│       └── settings.local.json.example # Example project settings
 ├── workflows/                  # Workflow documentation
 │   ├── ticket-workflow.md     # How to work on tickets
 │   ├── infrastructure-workflow.md # Infrastructure changes workflow
@@ -81,6 +153,17 @@ claude-code-setup/
 └── changelog/                  # Change history
     └── setup-changes.md        # Track setup improvements
 ```
+
+## File Count Summary
+
+- **Global files:** 15 files (commands, agents, rules, skills, configs)
+- **Project files:** 47 files (commands, agents, rules, skills, hooks, workflows)
+- **Total implementation examples:** 62 files
+- **Best practices:** 8 documentation files
+- **Workflows:** 3 workflow guides
+- **Tips:** 3 troubleshooting guides
+
+All files have been sanitized to remove project-specific paths, names, and sensitive information.
 
 ## Contributing
 
