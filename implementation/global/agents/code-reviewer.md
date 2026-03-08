@@ -1,10 +1,10 @@
 ---
 name: code-reviewer
 description: Reviews code for quality and security. Use after writing or modifying code.
-tools: [Read, Grep, Glob, Bash]
+tools: ["Read", "Grep", "Glob", "Bash"]
 model: sonnet
 skills: []
-mcpServers: [github]
+mcpServers: ["github", "strapi-docs", "aws-docs", "terraform", "context7"]
 color: green
 memory: project
 background: false
