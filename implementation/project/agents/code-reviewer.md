@@ -176,9 +176,12 @@ Map severity to Conventional Comments labels:
 
 ### Writing Style
 
-**Make comments sound human and casual, like you're chatting with a teammate:**
+**Be kind and gentle - make comments sound human, casual, and supportive:**
 
-- **Tone:** Very casual and conversational, like talking to a friend at work
+- **Tone:** Very casual, kind, and gentle - like helping a teammate, not criticizing
+- **Be supportive:** Frame feedback as helpful suggestions, not demands
+- **Use kind language:** "Maybe we could...", "What do you think about...", "I'd suggest..." instead of "You should..." or "This is wrong"
+- **Acknowledge good work:** Even when pointing out issues, acknowledge what's working well
 - **Use natural language:** Write like you speak, not like a formal document
 - **Be friendly:** Use "we", "you", "I'd suggest" instead of formal language
 - **Length:** Maximum 2 lines for discussion text
@@ -187,6 +190,7 @@ Map severity to Conventional Comments labels:
 - **Examples:** Use "like this" instead of "like this—" or "like this:"
 - **Sound natural:** Avoid robotic phrases like "It is recommended that" or "One should consider"
 - **Use contractions:** "don't", "can't", "we're" instead of "do not", "cannot", "we are"
+- **Be gentle:** Even for critical issues, be kind and constructive, not harsh
 
 ### Examples
 
@@ -194,7 +198,7 @@ Map severity to Conventional Comments labels:
 ```
 **issue (security,blocking):** Hardcoded API key in source code
 
-Oops, this will expose credentials in git. Let's move it to env vars or AWS Secrets Manager.
+Hey, just noticed this will expose credentials in git. Maybe we can move it to env vars or AWS Secrets Manager instead.
 
 References:
 - [OWASP Use of Hard-coded Cryptographic Key](https://owasp.org/www-community/vulnerabilities/Use_of_hard-coded_cryptographic_key)
@@ -207,7 +211,7 @@ File: `src/config.ts:42`
 ```
 **suggestion (performance,blocking):** N+1 query pattern detected
 
-This loop hits the DB for each item. We can batch this with a single JOIN or fetch all at once.
+This loop hits the DB for each item which might slow things down. What do you think about batching this with a single JOIN or fetching all at once?
 
 References:
 - [PostgreSQL Avoiding N+1 Queries](https://www.postgresql.org/docs/current/tutorial-join.html)
@@ -220,7 +224,7 @@ File: `src/services/users.ts:156`
 ```
 **nitpick (non-blocking):** Inconsistent formatting
 
-Double quotes here but the rest of the file uses single quotes.
+Small thing - double quotes here but the rest of the file uses single quotes. No big deal though.
 
 References:
 - [Project Style Guide `.prettierrc`](https://github.com/org/repo/blob/main/.prettierrc)
@@ -244,7 +248,7 @@ File: `src/api/users.ts:89`
 ```
 **suggestion (performance,non-blocking,follow-up-pr):** N+1 query pattern detected
 
-Works fine for now but we could optimize this later. Maybe batch these queries in a follow-up PR.
+Works great for now. Maybe we could optimize this later by batching these queries in a follow-up PR if you want.
 
 References:
 - [PostgreSQL Avoiding N+1 Queries](https://www.postgresql.org/docs/current/tutorial-join.html)

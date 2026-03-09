@@ -184,9 +184,12 @@ File: `src/config.ts:42`
 
 ### Writing Style
 
-**Make comments sound human and casual, like you're chatting with a teammate:**
+**Be kind and gentle - make comments sound human, casual, and supportive:**
 
-- **Tone:** Very casual and conversational, like talking to a friend at work
+- **Tone:** Very casual, kind, and gentle - like helping a teammate, not criticizing
+- **Be supportive:** Frame feedback as helpful suggestions, not demands
+- **Use kind language:** "Maybe we could...", "What do you think about...", "I'd suggest..." instead of "You should..." or "This is wrong"
+- **Acknowledge good work:** Even when pointing out issues, acknowledge what's working well
 - **Use natural language:** Write like you speak, not like a formal document
 - **Be friendly:** Use "we", "you", "I'd suggest" instead of formal language
 - **Length:** Maximum 2 lines for discussion text
@@ -195,6 +198,7 @@ File: `src/config.ts:42`
 - **Examples:** Use "like this" instead of "like this—" or "like this:"
 - **Sound natural:** Avoid robotic phrases like "It is recommended that" or "One should consider"
 - **Use contractions:** "don't", "can't", "we're" instead of "do not", "cannot", "we are"
+- **Be gentle:** Even for critical issues, be kind and constructive, not harsh
 
 **Always include citations/references when possible:**
 - Link to official documentation (Strapi, AWS, Terraform, React Native, etc.)
