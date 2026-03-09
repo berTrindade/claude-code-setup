@@ -184,7 +184,7 @@ File: `src/config.ts:42`
 
 ### Writing Style
 
-**Be kind and gentle - make comments sound human, casual, and supportive:**
+**Be kind and gentle - make comments sound casual and supportive:**
 
 - **Tone:** Very casual, kind, and gentle - like helping a teammate, not criticizing
 - **Be supportive:** Frame feedback as helpful suggestions, not demands
