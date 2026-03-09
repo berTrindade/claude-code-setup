@@ -81,7 +81,7 @@ git branch --show-current
 Before reviewing, identify which tools/services are used in the changed files and fetch their latest documentation:
 
 ```bash
-git diff master...HEAD --name-only
+git diff develop...HEAD --name-only
 ```
 
 For each tool/service detected, fetch relevant documentation:
@@ -112,7 +112,7 @@ Document the key APIs/patterns you'll reference during the review.
 ## Step 3 — Review the diff
 
 ```bash
-git diff master...HEAD
+git diff develop...HEAD
 ```
 
 Invoke the **code-reviewer** agent on the full diff. Read the changed files fully — not just the diff lines.
@@ -125,7 +125,7 @@ Invoke the **code-reviewer** agent on the full diff. Read the changed files full
 - Compare PR implementation against issue ACs to identify if all requirements are met
 
 **STRICT: Review ONLY PR commits, nothing else:**
-- **ONLY** review files that appear in `git diff master...HEAD` or `git diff --name-only`
+- **ONLY** review files that appear in `git diff develop...HEAD` or `git diff --name-only`
 - **DO NOT** explore unrelated parts of the codebase
 - **DO NOT** read files that are not in the PR diff
 - **DO NOT** check other files "just to be thorough" or "for context"

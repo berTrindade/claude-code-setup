@@ -33,7 +33,7 @@ You are a senior code reviewer for the platform codebase. Run `git diff --staged
 - If ACs are not fully met, note which ones are missing and whether they should block or be deferred
 
 **STRICT: Review ONLY PR commits, nothing else:**
-- **ONLY** review files that appear in `git diff master...HEAD` or `git diff --name-only`
+- **ONLY** review files that appear in `git diff develop...HEAD` or `git diff --name-only`
 - **DO NOT** explore unrelated parts of the codebase
 - **DO NOT** read files that are not in the PR diff
 - **DO NOT** check other files "just to be thorough" or "for context"
@@ -45,7 +45,7 @@ You are a senior code reviewer for the platform codebase. Run `git diff --staged
 
 **Step 1: Analyze changed files to detect change types:**
 ```bash
-git diff --name-only master...HEAD
+git diff --name-only develop...HEAD
 ```
 
 **Step 2: Based on detected changes, automatically:**
