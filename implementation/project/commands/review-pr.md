@@ -4,16 +4,28 @@ description: Review a teammate's PR. Usage: /review-pr <number>
 
 Review the pull request provided in the arguments (e.g. `/review-pr 42`).
 
-## Step 1 — Read the PR
+## Step 1 — Read the PR and understand intention
 
 ```bash
 gh pr view <number>
 ```
 
 Understand:
-- What is this PR trying to do?
+- What is this PR trying to do? What's the main goal?
 - What issue does it close?
 - Are there any reviewer notes or prior comments?
+
+**Look for hints about PR intention:**
+- Check PR title and description for keywords like "first pass", "initial", "WIP", "draft", "proof of concept", "spike"
+- Check PR labels (draft, WIP, first-pass, etc.)
+- Look for comments mentioning follow-up PRs or iterative approach
+- Understand if this is meant to be a complete solution or a first iteration
+
+**If this appears to be a first pass:**
+- Focus on whether it achieves the stated goal
+- Only block on CRITICAL issues (security, breaking changes, data loss)
+- Suggest follow-up PRs for non-critical improvements
+- Be more lenient on polish, optimization, and best practices
 
 ## Step 2 — Get the code
 
@@ -77,6 +89,11 @@ git diff master...HEAD
 ```
 
 Invoke the **code-reviewer** agent on the full diff. Read the changed files fully — not just the diff lines.
+
+**Pass PR intention context to the reviewer:**
+- Share what the PR is trying to achieve (from Step 1)
+- Indicate if this appears to be a first pass or iterative PR
+- Note any hints found about follow-up PRs or iterative approach
 
 **Focus on PR commits only:**
 - Review only the files and changes in the PR branch commits
