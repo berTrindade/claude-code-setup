@@ -257,12 +257,12 @@ End with:
 **praise:** Approved PR #[number]. [Brief understanding of what's being approved - what the PR achieves, key changes, or main goal]
 ```
 
-Examples:
-- `**praise:** Approved PR #274. Adds Strapi CMS integration with default settings for Strapi Cloud deployment.`
-- `**praise:** Approved PR #123. Implements user authentication flow with Cognito JWT validation on protected routes.`
-- `**praise:** Approved PR #456. Adds database migration for user profiles table with proper indexes and constraints.`
-- `**praise:** Approved PR #789. Fixes N+1 query issue in care plan generation by batching database queries.`
+**The PR number comes from the `/review-pr <number>` command argument** - use that same number in the approval comment.
 
-**Note:** The PR number should be extracted from the PR being reviewed (e.g., from `gh pr view <number>` or the PR URL).
+Examples:
+- If reviewing PR #274: `**praise:** Approved PR #274. Adds Strapi CMS integration with default settings for Strapi Cloud deployment.`
+- If reviewing PR #123: `**praise:** Approved PR #123. Implements user authentication flow with Cognito JWT validation on protected routes.`
+- If reviewing PR #456: `**praise:** Approved PR #456. Adds database migration for user profiles table with proper indexes and constraints.`
+- If reviewing PR #789: `**praise:** Approved PR #789. Fixes N+1 query issue in care plan generation by batching database queries.`
 
 **Always include at least one `praise` comment per review.**
