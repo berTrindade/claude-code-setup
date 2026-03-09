@@ -176,11 +176,17 @@ Map severity to Conventional Comments labels:
 
 ### Writing Style
 
-- **Tone:** Casual and friendly, like talking to a teammate
+**Make comments sound human and casual, like you're chatting with a teammate:**
+
+- **Tone:** Very casual and conversational, like talking to a friend at work
+- **Use natural language:** Write like you speak, not like a formal document
+- **Be friendly:** Use "we", "you", "I'd suggest" instead of formal language
 - **Length:** Maximum 2 lines for discussion text
 - **Conciseness:** Get to the point quickly, no fluff
 - **Punctuation:** Avoid em dashes (—) and colons (:) in discussion text
 - **Examples:** Use "like this" instead of "like this—" or "like this:"
+- **Sound natural:** Avoid robotic phrases like "It is recommended that" or "One should consider"
+- **Use contractions:** "don't", "can't", "we're" instead of "do not", "cannot", "we are"
 
 ### Examples
 
@@ -188,7 +194,7 @@ Map severity to Conventional Comments labels:
 ```
 **issue (security,blocking):** Hardcoded API key in source code
 
-This exposes credentials in version control. Use environment variables or AWS Secrets Manager instead.
+Oops, this will expose credentials in git. Let's move it to env vars or AWS Secrets Manager.
 
 References:
 - [OWASP Use of Hard-coded Cryptographic Key](https://owasp.org/www-community/vulnerabilities/Use_of_hard-coded_cryptographic_key)
@@ -201,7 +207,7 @@ File: `src/config.ts:42`
 ```
 **suggestion (performance,blocking):** N+1 query pattern detected
 
-This loop runs a query for each iteration. Use a single JOIN or batch fetch instead.
+This loop hits the DB for each item. We can batch this with a single JOIN or fetch all at once.
 
 References:
 - [PostgreSQL Avoiding N+1 Queries](https://www.postgresql.org/docs/current/tutorial-join.html)
@@ -214,7 +220,7 @@ File: `src/services/users.ts:156`
 ```
 **nitpick (non-blocking):** Inconsistent formatting
 
-Double quotes here but the rest uses single quotes per style guide.
+Double quotes here but the rest of the file uses single quotes.
 
 References:
 - [Project Style Guide `.prettierrc`](https://github.com/org/repo/blob/main/.prettierrc)
@@ -226,7 +232,7 @@ File: `src/components/Button.tsx:23`
 ```
 **praise:** Nice error handling
 
-Handles edge cases well and gives clear messages. Good use of Zod for validation.
+Really like how you handled the edge cases here. Clear error messages and good use of Zod.
 
 References:
 - [Zod Error Handling](https://zod.dev/?id=error-handling)
@@ -238,7 +244,7 @@ File: `src/api/users.ts:89`
 ```
 **suggestion (performance,non-blocking,follow-up-pr):** N+1 query pattern detected
 
-This works for now but could be optimized. Consider a follow-up PR to batch these queries.
+Works fine for now but we could optimize this later. Maybe batch these queries in a follow-up PR.
 
 References:
 - [PostgreSQL Avoiding N+1 Queries](https://www.postgresql.org/docs/current/tutorial-join.html)
