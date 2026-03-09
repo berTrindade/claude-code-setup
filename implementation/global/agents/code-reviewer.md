@@ -251,51 +251,15 @@ End with:
 1. Summary table showing counts by label type
 2. Verdict: **Approve / Request Changes / Comment**
 
+**If approving, include a 1-line approval comment:**
+```
+**praise:** Approved. [Brief understanding of what's being approved - what the PR achieves, key changes, or main goal]
+```
+
+Examples:
+- `**praise:** Approved. Adds Strapi CMS integration with default settings for Strapi Cloud deployment.`
+- `**praise:** Approved. Implements user authentication flow with Cognito JWT validation on protected routes.`
+- `**praise:** Approved. Adds database migration for user profiles table with proper indexes and constraints.`
+- `**praise:** Approved. Fixes N+1 query issue in care plan generation by batching database queries.`
+
 **Always include at least one `praise` comment per review.**
-
-### Approval Comment Format
-
-If the verdict is **Approve**, include an approval comment that explains what you're approving:
-
-```
-**praise:** Approving this PR
-
-This PR successfully implements [brief summary of what was accomplished]. 
-
-**What I'm approving:**
-- [Key change 1] - Brief explanation of why this is good
-- [Key change 2] - Brief explanation of why this is good
-- [Key change 3] - Brief explanation of why this is good
-
-**Verified:**
-- ✅ Addresses all acceptance criteria from issue #[number]
-- ✅ No security vulnerabilities detected
-- ✅ Code follows project patterns and conventions
-- ✅ [Any other specific checks relevant to this PR]
-
-**Note:** [Any non-blocking suggestions or follow-up items can be addressed in future PRs]
-
-Ready to merge!
-```
-
-**Example Approval Comment:**
-```
-**praise:** Approving this PR
-
-This PR successfully implements the initial Strapi installation with default settings.
-
-**What I'm approving:**
-- Strapi installation and configuration - Proper setup following Strapi Cloud requirements
-- Default settings implementation - Appropriate for initial setup, can be customized later
-- Package.json updates - Dependencies correctly added
-
-**Verified:**
-- ✅ Addresses all acceptance criteria from issue #44
-- ✅ No security vulnerabilities detected
-- ✅ Configuration follows project conventions
-- ✅ No hardcoded secrets or credentials
-
-**Note:** Some optimization opportunities noted but can be handled in follow-up PRs.
-
-Ready to merge!
-```
