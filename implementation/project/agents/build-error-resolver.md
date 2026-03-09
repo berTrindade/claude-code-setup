@@ -21,15 +21,14 @@ Run `npx tsc --noEmit --pretty` to collect all errors at once, then fix them all
 | `'await' outside async` | Add `async` |
 | `Cannot use import in CommonJS` | Add `"type": "module"` to package.json |
 
-## platform Package Commands
+## Example Package Commands
 
 Run from inside the package directory:
 
 ```bash
-cd platform-api && npm run build
-cd platform-care-plan && npm run build
-cd platform-website && npm run build
-cd platform-app && npm run ios  # or android
+cd <backend-service> && npm run build
+cd <web-app> && npm run build
+cd <mobile-app> && npm run ios  # or android
 ```
 
 If the same error persists after 3 attempts, or fixing it introduces more errors, stop and ask.

@@ -48,11 +48,11 @@ Before removing anything:
 - [ ] Build passes after removal
 - [ ] Lint passes after removal
 
-## platform Notes
+## Monorepo Notes
 
-- Each package in `platform/` is independent — run tools per package, not at the monorepo root
-- Check that removed exports aren't imported across package boundaries (rare but possible via relative paths)
-- `platform-app/` uses path aliases (`@/*`) — check those too when grepping for references
+- Each package is independent — run tools per package, not at the monorepo root
+- Check that removed exports aren't imported across package boundaries
+- Path aliases (e.g. `@/*`) — check those too when grepping for references
 
 ## When NOT to Use
 
@@ -60,4 +60,3 @@ Before removing anything:
 - Right before a production deployment
 - Without test coverage to verify nothing broke
 - On code you don't fully understand
-

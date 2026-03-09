@@ -1,39 +1,36 @@
 {
   "mcpServers": {
     "github": {
+      "type": "stdio",
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-github"],
       "env": {
-        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+        "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
       }
     },
     "sequential-thinking": {
+      "type": "stdio",
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"]
     },
     "context7": {
+      "type": "stdio",
       "command": "npx",
-      "args": ["-y", "--yes", "@upstash/context7-mcp@latest"]
+      "args": ["-y", "@upstash/context7-mcp"]
     },
     "aws-docs": {
+      "type": "stdio",
       "command": "uvx",
-      "args": ["awslabs.aws-documentation-mcp-server@latest"],
-      "env": {
-        "FASTMCP_LOG_LEVEL": "ERROR",
-        "AWS_DOCUMENTATION_PARTITION": "aws"
-      }
+      "args": ["awslabs.aws-documentation-mcp-server@latest"]
     },
     "aws": {
-      "command": "uvx",
-      "args": ["mcp-proxy-for-aws@latest", "https://aws-mcp.us-east-1.api.aws/mcp", "--metadata", "AWS_REGION=us-east-1"]
-    },
-    "playwright": {
+      "type": "stdio",
       "command": "npx",
-      "args": ["-y", "@playwright/mcp@latest"]
-    },
-    "obsidian": {
-      "command": "npx",
-      "args": ["-y", "@mauricio.wolff/mcp-obsidian@latest", "${OBSIDIAN_VAULT_PATH}"]
+      "args": ["-y", "@modelcontextprotocol/server-aws"],
+      "env": {
+        "AWS_PROFILE": "default",
+        "AWS_REGION": "eu-west-2"
+      }
     }
   }
 }

@@ -18,17 +18,12 @@ Understand:
 **Check the linked ticket/issue:**
 - Extract issue number from PR description
   - Look for patterns like "Closes #44", "Fixes #123", "Resolves #456", or just "#789"
-  - Also check for full URLs like `https://github.com/suprusers/platform/issues/44`
-  - Extract just the number (e.g., "44" from "Closes #44" or from the URL)
+  - Also check for full issue URLs
+  - Extract just the number
 - Fetch and read the linked issue/ticket:
 
 ```bash
 gh issue view <issue-number>
-```
-
-For example, if PR says "Closes #44" or links to `https://github.com/suprusers/platform/issues/44`, run:
-```bash
-gh issue view 44
 ```
 
 **Understand scope and acceptance criteria:**
@@ -59,13 +54,11 @@ First, fetch the latest changes from the remote:
 git fetch origin
 ```
 
-Then checkout the PR branch (this will pull the latest changes):
+Then checkout the PR branch:
 
 ```bash
 gh pr checkout <number> --force
 ```
-
-The `--force` flag ensures that if the branch already exists locally, it will be reset to match the latest state of the PR.
 
 Verify you're on the correct branch:
 
@@ -83,17 +76,13 @@ git diff develop...HEAD --name-only
 
 For each tool/service detected, fetch relevant documentation:
 
-**If Strapi code changed:**
-- Use `strapi-docs` MCP server to fetch latest Strapi API documentation
-- Check for plugin APIs, content types, lifecycle hooks, etc.
-
 **If AWS/Terraform code changed:**
 - Use `aws-docs` MCP server to fetch AWS service documentation
 - Use `terraform` MCP server to fetch Terraform provider/resource docs
 - Verify resource configurations against latest AWS best practices
 
-**If React Native/Expo code changed:**
-- Use `context7` MCP server to fetch React Native/Expo documentation
+**If frontend code changed:**
+- Use `context7` MCP server to fetch framework documentation
 - Check for API changes, deprecations, best practices
 
 **If Express/Node API code changed:**
@@ -125,10 +114,7 @@ Invoke the **code-reviewer** agent on the full diff. Read the changed files full
 - **ONLY** review files that appear in `git diff develop...HEAD` or `git diff --name-only`
 - **DO NOT** explore unrelated parts of the codebase
 - **DO NOT** read files that are not in the PR diff
-- **DO NOT** check other files "just to be thorough" or "for context"
-- **ONLY** read additional files if absolutely necessary to understand a specific change in the commits (e.g., understanding how a changed function is called, verifying an import path, checking a type definition that's directly referenced in the changed code)
-- **STRICT SCOPE:** If a file is not in the git diff, it is OUT OF SCOPE for this review
-- Stay within the exact scope of what was actually changed in this PR - nothing more, nothing less
+- **ONLY** read additional files if absolutely necessary to understand a specific change
 
 **Use the documentation fetched in Step 2.5** to verify:
 - API usage matches latest documentation
@@ -143,8 +129,6 @@ Invoke the **code-reviewer** agent on the full diff. Read the changed files full
 Group by file. Severity first: CRITICAL → HIGH → LOW.
 
 ### Comment Format
-
-Use the Conventional Comments format for all review comments:
 
 ```
 <label> [decorations]: <subject>
@@ -168,52 +152,18 @@ Use the Conventional Comments format for all review comments:
 - `(if-minor)` - Only if changes are minor
 - Domain-specific: `(security)`, `(test)`, `(ux)`, `(performance)`, `(api)`, etc.
 
-### Example Comment Format
-
-```
-**issue (security,blocking):** Hardcoded API key detected
-
-This exposes credentials in version control. Use environment variables or secrets management instead.
-
-References:
-- [OWASP Secrets Management](https://owasp.org/www-community/vulnerabilities/Use_of_hard-coded_cryptographic_key)
-- [AWS Secrets Manager Best Practices](https://docs.aws.amazon.com/secretsmanager/latest/userguide/best-practices.html)
-
-File: `src/config.ts:42`
-```
-
 ### Writing Style
 
 - **Tone:** Casual and friendly, like talking to a teammate
 - **Length:** Maximum 2 lines for discussion text
 - **Conciseness:** Get to the point quickly, no fluff
-- **Punctuation:** Avoid em dashes (—) and colons (:) in discussion text
-- **Examples:** Use "like this" instead of "like this—" or "like this:"
+- **Punctuation:** Avoid em dashes and colons in discussion text
 
-**Always include citations/references when possible:**
-- Link to official documentation (Strapi, AWS, Terraform, React Native, etc.)
-- Reference security best practices (OWASP, CWE, etc.)
-- Cite performance guides (React performance, database optimization, etc.)
-- Link to relevant GitHub issues, RFCs, or ADRs
-- Reference style guides or coding standards
-
-For each finding:
-
-```
-**<label> (<decorations>):** <subject>
-
-<discussion - casual tone, max 2 lines, concise, no em dashes or colons>
-
-References:
-- [Title](URL) - Brief description
-- [Title](URL) - Brief description
-
-File: `path:line`
-```
+**Always include citations/references when possible.**
 
 End with a verdict: **Approve / Request Changes / Comment**.
 
-**Important:** Output the review findings to the session only. Do NOT post anything to GitHub or the PR. The review is for the user's reference only.
+**Important:** Output the review findings to the session only. Do NOT post anything to GitHub or the PR.
 
 ## Step 5 — Return to your branch
 

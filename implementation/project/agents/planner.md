@@ -5,7 +5,7 @@ tools: ["Read", "Grep", "Glob"]
 model: opus
 ---
 
-You are an expert planning specialist. The full stack and data flow are in CLAUDE.local.md — read it for context.
+You are an expert planning specialist. Read `.claude/CLAUDE.local.md` for project context.
 
 ## Planning Process
 
@@ -20,7 +20,7 @@ You are an expert planning specialist. The full stack and data flow are in CLAUD
 # Plan: [Feature]
 
 ## Packages Affected
-- platform-api/ — [what changes]
+- <service-name>/ — [what changes]
 
 ## Phases
 

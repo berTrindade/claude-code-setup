@@ -11,7 +11,7 @@ Read the error, stack trace, or description provided. Ask for it if missing.
 Identify:
 - What is the expected behaviour?
 - What is the actual behaviour?
-- Which package is affected? (`platform-api`, `platform-care-plan`, `platform-app`, etc.)
+- Which package is affected?
 
 ## Step 2 — Reproduce with a failing test
 

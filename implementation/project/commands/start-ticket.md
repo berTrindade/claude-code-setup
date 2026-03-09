@@ -20,7 +20,7 @@ Understand:
 
 ## Step 2 — Spike Relevant Code
 
-Explore the codebase following the data flow.
+Explore the codebase following the data flow: `[service-a] → [service-b] → [service-c] → [api] → [app]`
 
 Identify:
 - Which files/modules are involved?
@@ -46,8 +46,11 @@ If infrastructure changes are involved:
    - Favor official Terraform Registry modules over custom code
    - Use naming convention: `{project}-{environment}-{component}`
    - Apply tagging module for standard tags
+   - Use declarative API Gateway routes if adding endpoints
    - Follow Flow A (ephemeral) for DB secrets or Flow B (external) for API keys
    - Implement least-privilege IAM policies
+   - Add VPC endpoints for private subnet access
+   - Include observability (CloudWatch, X-Ray, Slack alerts)
 
 ## Step 5 — Create Branch
 
@@ -64,8 +67,8 @@ Create a phased plan with exact file paths and implementation steps. Wait for us
 
 **Conventions applied automatically:**
 - Branches created from `develop` (see `.claude/rules/common/git-workflow.md`)
-- Commit messages use conventional commits format
+- Commit messages use conventional commits format (see `.claude/rules/common/git-workflow.md`)
 - **Commits must be reversible** — small, focused commits organized by topic/domain
-- Code comments follow style guidelines
+- Code comments follow style guidelines (see `.claude/rules/code-style.md`)
 - PR descriptions follow `.github/pull_request_template.md` when using `/raise-pr` and should be simple
 - **Terraform patterns** (see `.claude/rules/infrastructure/terraform-patterns.md`)

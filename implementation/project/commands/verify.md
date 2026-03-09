@@ -6,7 +6,7 @@ Run in each affected package (`git diff --name-only origin/master...HEAD`). Stop
 
 ```bash
 npm run build
-npx tsc --noEmit          # platform-website: npm run typecheck
+npx tsc --noEmit
 npm run lint
 npm test -- --coverage
 npm audit --audit-level=high

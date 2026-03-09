@@ -7,61 +7,61 @@ model: sonnet
 
 Write tests first. Always. Then minimal implementation to pass. Then refactor.
 
-Coverage minimum: 80%. 100% for Cognito auth logic, care plan rules, financial logic.
+Coverage minimum: 80%. 100% for auth logic, business rules, financial logic.
 
-## platform Test Patterns
+## Example Test Patterns
 
-### API endpoint (`platform-api`)
+### API endpoint
 ```typescript
-describe('GET /pets/:id/lab-results', () => {
-  it('returns results for authenticated owner', async () => { })
+describe('GET /api/resource/:id', () => {
+  it('returns data for authenticated user', async () => { })
   it('returns 401 with no auth token', async () => { })
-  it('returns 403 when pet belongs to different user', async () => { })
-  it('returns 404 when pet does not exist', async () => { })
+  it('returns 403 when resource belongs to different user', async () => { })
+  it('returns 404 when resource does not exist', async () => { })
 })
 ```
 
-### Care plan engine (`platform-care-plan`)
+### Business logic / rules engine
 ```typescript
-describe('generateCareActions', () => {
-  it('generates correct actions for elevated BUN', async () => { })
-  it('handles missing lab values gracefully', async () => { })
-  it('returns empty array for healthy baseline', async () => { })
+describe('processData', () => {
+  it('returns correct output for valid input', async () => { })
+  it('handles missing values gracefully', async () => { })
+  it('returns empty array for baseline input', async () => { })
 })
 ```
 
-### React Native component (`platform-app`)
+### React Native component
 ```typescript
-describe('LabResultCard', () => {
+describe('DataCard', () => {
   it('renders value with correct unit', () => { })
   it('highlights out-of-range values', () => { })
-  it('calls onPress with result id', () => { })
+  it('calls onPress with correct id', () => { })
 })
 ```
 
 ## Key Mocks
 
 ```typescript
-// Cognito
-jest.mock('../auth/cognito', () => ({
+// Auth
+jest.mock('../auth', () => ({
   verifyToken: jest.fn().mockResolvedValue({ userId: 'user-123' })
 }))
 
-// PostgreSQL
+// Database
 jest.mock('../db', () => ({
   query: jest.fn().mockResolvedValue({ rows: [] })
 }))
 
-// External lab API
-jest.mock('../clients/lab-api', () => ({
-  fetchResults: jest.fn().mockResolvedValue({ results: [] })
+// External API
+jest.mock('../clients/external-api', () => ({
+  fetchData: jest.fn().mockResolvedValue({ results: [] })
 }))
 ```
 
 ## Always Test
 
 - Null/undefined inputs, empty arrays/strings
-- Expired or missing Cognito token
+- Expired or missing auth token
 - DB and network failures
 - Boundary values (min/max)
 - Tests are independent — no shared state between them

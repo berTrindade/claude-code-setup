@@ -2,7 +2,7 @@
 description: Pure research and investigation. No code written. Ends with a findings summary.
 ---
 
-Investigate the question provided in the arguments (e.g. `/spike how does care plan generation work`).
+Investigate the question provided in the arguments (e.g. `/spike how does X work`).
 
 Do not write any code. Do not make any changes. Only read and explore.
 
@@ -15,7 +15,7 @@ Restate the question clearly in one sentence. If it's vague, break it into sub-q
 Use Grep, Glob, and Read to explore the codebase. Trace the relevant data flow:
 
 ```
-clinical → care-plan → curate → api → app
+[service-a] → [service-b] → [service-c] → [api] → [app]
 ```
 
 For each area touched:
