@@ -252,3 +252,50 @@ End with:
 2. Verdict: **Approve / Request Changes / Comment**
 
 **Always include at least one `praise` comment per review.**
+
+### Approval Comment Format
+
+If the verdict is **Approve**, include an approval comment that explains what you're approving:
+
+```
+**praise:** Approving this PR
+
+This PR successfully implements [brief summary of what was accomplished]. 
+
+**What I'm approving:**
+- [Key change 1] - Brief explanation of why this is good
+- [Key change 2] - Brief explanation of why this is good
+- [Key change 3] - Brief explanation of why this is good
+
+**Verified:**
+- ✅ Addresses all acceptance criteria from issue #[number]
+- ✅ No security vulnerabilities detected
+- ✅ Code follows project patterns and conventions
+- ✅ [Any other specific checks relevant to this PR]
+
+**Note:** [Any non-blocking suggestions or follow-up items can be addressed in future PRs]
+
+Ready to merge!
+```
+
+**Example Approval Comment:**
+```
+**praise:** Approving this PR
+
+This PR successfully implements the initial Strapi installation with default settings.
+
+**What I'm approving:**
+- Strapi installation and configuration - Proper setup following Strapi Cloud requirements
+- Default settings implementation - Appropriate for initial setup, can be customized later
+- Package.json updates - Dependencies correctly added
+
+**Verified:**
+- ✅ Addresses all acceptance criteria from issue #44
+- ✅ No security vulnerabilities detected
+- ✅ Configuration follows project conventions
+- ✅ No hardcoded secrets or credentials
+
+**Note:** Some optimization opportunities noted but can be handled in follow-up PRs.
+
+Ready to merge!
+```

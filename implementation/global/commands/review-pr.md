@@ -213,6 +213,30 @@ File: `path:line`
 
 End with a verdict: **Approve / Request Changes / Comment**.
 
+**If approving, include an approval comment:**
+When the verdict is **Approve**, include a `praise` comment that explains what you're approving:
+
+```
+**praise:** Approving this PR
+
+This PR successfully implements [brief summary of what was accomplished].
+
+**What I'm approving:**
+- [Key change 1] - Brief explanation
+- [Key change 2] - Brief explanation
+- [Key change 3] - Brief explanation
+
+**Verified:**
+- ✅ Addresses all acceptance criteria from issue #[number]
+- ✅ No security vulnerabilities detected
+- ✅ Code follows project patterns
+- ✅ [Any other specific checks]
+
+**Note:** [Any non-blocking suggestions for future PRs]
+
+Ready to merge!
+```
+
 **Important:** Output the review findings to the session only. Do NOT post anything to GitHub or the PR. The review is for the user's reference only.
 
 ## Step 5 — Return to your branch
