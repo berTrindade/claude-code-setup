@@ -18,11 +18,27 @@ Understand:
 - What issue does it close?
 - Are there any reviewer notes or prior comments?
 
+**Check the linked ticket/issue:**
+- Extract issue number from PR description (e.g., "Closes #123" or "Fixes #456")
+- Fetch and read the linked issue/ticket:
+
+```bash
+gh issue view <issue-number>
+```
+
+**Understand scope and acceptance criteria:**
+- Read the issue description to understand the problem being solved
+- Review acceptance criteria (ACs) listed in the issue
+- Understand the expected scope and boundaries of the work
+- Note any constraints, requirements, or edge cases mentioned
+- Check if the PR addresses all ACs or if some are deferred
+
 **Look for hints about PR intention:**
 - Check PR title and description for keywords like "first pass", "initial", "WIP", "draft", "proof of concept", "spike"
 - Check PR labels (draft, WIP, first-pass, etc.)
 - Look for comments mentioning follow-up PRs or iterative approach
 - Understand if this is meant to be a complete solution or a first iteration
+- Compare PR scope against issue ACs to see if this is a partial implementation
 
 **If this appears to be a first pass:**
 - Focus on whether it achieves the stated goal
@@ -95,8 +111,10 @@ Invoke the **code-reviewer** agent on the full diff. Read the changed files full
 
 **Pass PR intention context to the reviewer:**
 - Share what the PR is trying to achieve (from Step 1)
+- Share the linked issue/ticket scope and acceptance criteria
 - Indicate if this appears to be a first pass or iterative PR
 - Note any hints found about follow-up PRs or iterative approach
+- Compare PR implementation against issue ACs to identify if all requirements are met
 
 **Focus on PR commits only:**
 - Review only the files and changes in the PR branch commits
