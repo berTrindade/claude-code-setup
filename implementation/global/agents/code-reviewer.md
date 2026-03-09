@@ -172,6 +172,18 @@ References:
 File: `src/api/users.ts:89`
 ```
 
+**Follow-up PR Suggestion (for first-pass PRs):**
+```
+**suggestion (performance,non-blocking,follow-up-pr):** N+1 query pattern detected
+
+This works for now but could be optimized. Consider a follow-up PR to batch these queries.
+
+References:
+- [PostgreSQL Avoiding N+1 Queries](https://www.postgresql.org/docs/current/tutorial-join.html)
+
+File: `src/services/users.ts:156`
+```
+
 ### Output Summary
 
 End with:
