@@ -19,11 +19,19 @@ Understand:
 - Are there any reviewer notes or prior comments?
 
 **Check the linked ticket/issue:**
-- Extract issue number from PR description (e.g., "Closes #123" or "Fixes #456")
+- Extract issue number from PR description
+  - Look for patterns like "Closes #44", "Fixes #123", "Resolves #456", or just "#789"
+  - Also check for full URLs like `https://github.com/suprusers/SuprDog/issues/44`
+  - Extract just the number (e.g., "44" from "Closes #44" or from the URL)
 - Fetch and read the linked issue/ticket:
 
 ```bash
 gh issue view <issue-number>
+```
+
+For example, if PR says "Closes #44" or links to `https://github.com/suprusers/SuprDog/issues/44`, run:
+```bash
+gh issue view 44
 ```
 
 **Understand scope and acceptance criteria:**
