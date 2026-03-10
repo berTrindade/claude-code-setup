@@ -10,6 +10,7 @@
 | Reviewing a teammate's PR | `/review-pr <n>` | Reads PR + linked ticket → fetches latest code → auto-detects change types → invokes specialized agents → reviews with documentation → outputs Conventional Comments format → session-only (no GitHub posting) |
 | Need to understand something | `/spike <question>` | Pure exploration, no code — ends with structured findings doc |
 | Before shipping | `/verify` → `/raise-pr` | All checks → lint/typecheck/tests/security → opens PR with full body |
+| Create draft PR (WIP) | `/draft-pr` | Creates draft PR without verification — use for work-in-progress PRs |
 | Architecture decision | `/plan` | Planner agent → phased plan → waits for your confirmation |
 | Writing a new feature TDD | `/tdd` | Enforces RED→GREEN→REFACTOR, 80%+ coverage |
 | Cleaning up dead code | `/refactor-clean` | knip/depcheck/ts-prune → safe removal, one batch at a time |
@@ -159,6 +160,20 @@ Pick ticket → `/start-ticket <number>`
 4. Checks git history and recent PRs
 5. Outputs: what exists / what's missing / recommendation
 6. If implementation needed: `/start-ticket` or `/plan`
+
+---
+
+### Creating a Draft PR — `/draft-pr`
+
+Use for work-in-progress PRs that aren't ready for review yet:
+
+1. Review changes: `git diff develop...HEAD`
+2. Create draft PR: `gh pr create --base develop --draft --title "<type>: <description>" --body-file .github/pull_request_template.md`
+3. Fill in PR template (test plan can be "TBD" for drafts)
+4. Link to issue: `Closes #<issue-number>` or `Fixes #<issue-number>`
+5. Mark as ready later: `gh pr ready <number>` when ready for review
+
+**Note:** Draft PRs won't trigger review requests until marked as ready.
 
 ---
 
