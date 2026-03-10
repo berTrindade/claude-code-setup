@@ -13,10 +13,16 @@ Review the pull request provided in the arguments (e.g. `/review-pr 42`).
 gh pr view <number>
 ```
 
+**Check if PR is marked as draft:**
+```bash
+gh pr view <number> --json isDraft
+```
+
 Understand:
 - What is this PR trying to do? What's the main goal?
 - What issue does it close?
 - Are there any reviewer notes or prior comments?
+- **Is this PR marked as draft in GitHub?** (affects review style)
 
 **Check the linked ticket/issue:**
 - Extract issue number from PR description
@@ -41,18 +47,23 @@ gh issue view 44
 - Note any constraints, requirements, or edge cases mentioned
 - Check if the PR addresses all ACs or if some are deferred
 
-**Look for hints about PR intention:**
+**Detect draft/WIP status:**
+- Check if PR is marked as draft: `gh pr view <number> --json isDraft`
 - Check PR title and description for keywords like "first pass", "initial", "WIP", "draft", "proof of concept", "spike"
 - Check PR labels (draft, WIP, first-pass, etc.)
 - Look for comments mentioning follow-up PRs or iterative approach
 - Understand if this is meant to be a complete solution or a first iteration
 - Compare PR scope against issue ACs to see if this is a partial implementation
 
-**If this appears to be a first pass:**
-- Focus on whether it achieves the stated goal
-- Only block on CRITICAL issues (security, breaking changes, data loss)
-- Suggest follow-up PRs for non-critical improvements
-- Be more lenient on polish, optimization, and best practices
+**To signal draft-style review:** Mark your PR as draft in GitHub, or include "draft"/"WIP" in the title/labels.
+
+**If this is a draft or first pass PR:**
+- **Review style:** Focus on direction and approach, not perfection
+- **Blocking:** Only block on CRITICAL issues (security vulnerabilities, breaking changes, data loss risks)
+- **Non-critical issues:** Mark as `(non-blocking)` and suggest follow-up PRs
+- **Tone:** Be extra supportive and encouraging - this is work in progress
+- **Focus:** Does it achieve the stated goal? Is the approach sound?
+- **Be lenient:** On polish, optimization, best practices, formatting
 
 ## Step 2 — Get the code
 
