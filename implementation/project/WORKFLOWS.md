@@ -8,6 +8,7 @@
 | Bug report (Slack, Sentry) | `/bug-fix` | Reproduce with failing test → root cause → minimal fix → verify |
 | Production is down | `/hotfix` | Branch from master → smallest fix → fast PR, no full verify cycle |
 | Reviewing a teammate's PR | `/review-pr <n>` | Reads PR + linked ticket → fetches latest code → auto-detects change types → invokes specialized agents → reviews with documentation → outputs Conventional Comments format → session-only (no GitHub posting) |
+| Check if PR comments were addressed | `/check-pr-comments <n>` | Reviews PR again → checks if previous review comments were addressed → verifies fixes → reports on addressed/pending/new issues |
 | Need to understand something | `/spike <question>` | Pure exploration, no code — ends with structured findings doc |
 | Before shipping | `/verify` → `/raise-pr` | All checks → lint/typecheck/tests/security → opens PR with full body |
 | Create draft PR (WIP) | `/draft-pr` | Creates draft PR without verification — use for work-in-progress PRs |
@@ -149,6 +150,36 @@ Pick ticket → `/start-ticket <number>`
 - Auto-detects change types and uses specialized agents
 - Fetches latest documentation for accurate reviews
 - Strict scope - only reviews PR commits, nothing else
+
+---
+
+### Checking if PR Comments Were Addressed — `/check-pr-comments 42`
+
+Use this when you've reviewed a PR before and want to verify if your comments were addressed:
+
+1. **Read PR and previous comments:**
+   - Check PR comments and review threads
+   - See what changed since your last review
+   - Note which comments were addressed
+
+2. **Get latest code:**
+   - `git fetch origin` - fetch latest changes
+   - `gh pr checkout <number> --force` - checkout PR branch
+   - Review new commits since your last review
+
+3. **Check specific comments:**
+   - For each comment from your previous review
+   - Verify if the issue was fixed
+   - Check if fixes match your suggestions
+   - Look for any new issues introduced
+
+4. **Output findings:**
+   - **Conventional Comments format**
+   - Mark comments as addressed, not addressed, or partially addressed
+   - Report any new issues found
+   - Summary: All Addressed / Partially Addressed / Needs More Work
+
+**Note:** This is session-only output, doesn't post to GitHub.
 
 ---
 
