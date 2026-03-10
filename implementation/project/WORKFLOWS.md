@@ -7,7 +7,7 @@
 | New ticket from the board | `/start-ticket <n>` | Fetches issue → spikes codebase → creates branch → produces plan → waits |
 | Bug report (Slack, Sentry) | `/bug-fix` | Reproduce with failing test → root cause → minimal fix → verify |
 | Production is down | `/hotfix` | Branch from master → smallest fix → fast PR, no full verify cycle |
-| Reviewing a teammate's PR | `/review-pr <n>` | Checks out branch → full diff review → findings by severity → post to GitHub |
+| Reviewing a teammate's PR | `/review-pr <n>` | Reads PR + linked ticket → fetches latest code → auto-detects change types → invokes specialized agents → reviews with documentation → outputs Conventional Comments format → session-only (no GitHub posting) |
 | Need to understand something | `/spike <question>` | Pure exploration, no code — ends with structured findings doc |
 | Before shipping | `/verify` → `/raise-pr` | All checks → lint/typecheck/tests/security → opens PR with full body |
 | Architecture decision | `/plan` | Planner agent → phased plan → waits for your confirmation |
@@ -100,12 +100,54 @@ Pick ticket → `/start-ticket <number>`
 
 ### Reviewing a Teammate's PR — `/review-pr 42`
 
-1. Reads PR description + linked issue
-2. Checks out branch locally
-3. Full diff review via `code-reviewer` agent
-4. Findings grouped by file: CRITICAL → HIGH → LOW
-5. Optionally posts `gh pr review` comment to GitHub
-6. Returns you to your previous branch
+1. **Read PR and understand intention:**
+   - Read PR description, title, labels
+   - Extract and read linked issue/ticket (e.g., "Closes #44")
+   - Understand scope and acceptance criteria (ACs)
+   - Check for hints about "first pass", "WIP", "draft"
+   - Compare PR implementation against issue ACs
+
+2. **Get the code:**
+   - `git fetch origin` - fetch latest changes
+   - `gh pr checkout <number> --force` - checkout PR branch with latest changes
+   - Verify branch with `git branch --show-current`
+
+3. **Identify tools/services and fetch documentation:**
+   - Analyze changed files: `git diff develop...HEAD --name-only`
+   - Fetch relevant docs via MCP servers:
+     - Strapi → `strapi-docs` MCP
+     - AWS/Terraform → `aws-docs` + `terraform` MCPs
+     - React Native/Expo → `context7` MCP
+     - Express/Node → `context7` MCP
+     - PostgreSQL → `postgres` MCP
+
+4. **Review the diff:**
+   - **STRICT SCOPE:** Only review files in `git diff develop...HEAD`
+   - Auto-detect change types and invoke specialized agents:
+     - Security changes → `security-reviewer` agent
+     - Database changes → `database-reviewer` agent
+     - Build errors → `build-error-resolver` agent
+   - Reference relevant skills based on changes
+   - Full diff review via `code-reviewer` agent
+
+5. **Output findings:**
+   - **Conventional Comments format** (https://conventionalcomments.org/)
+   - **Kind and gentle tone** - casual, supportive, like helping a teammate
+   - **Always include citations/references** when possible
+   - Grouped by file, severity first: CRITICAL → HIGH → LOW
+   - **If approving:** Include 1-line approval comment with PR number: `**praise:** Approved PR #[number]. [description]`
+   - **Session-only output** - does NOT post to GitHub or PR
+
+6. **Return to your branch:**
+   - `git checkout -` - return to previous branch
+
+**Key features:**
+- Understands PR intention and handles first-pass PRs appropriately
+- Only blocks on CRITICAL issues for first-pass PRs
+- Suggests follow-up PRs for non-critical improvements
+- Auto-detects change types and uses specialized agents
+- Fetches latest documentation for accurate reviews
+- Strict scope - only reviews PR commits, nothing else
 
 ---
 
@@ -229,7 +271,7 @@ Hooks are organized in `.claude/hooks/` directory structure. See `~/.claude/rule
 | `/start-ticket` | `github` · `postgres` (schema check) · `context7` (framework docs) |
 | `/bug-fix` | `posthog` (error scope) · `postgres` (data state) · `context7` · `playwright` (E2E repro) |
 | `/hotfix` | `posthog` (blast radius) · `postgres` (data check) · `aws` (live infra state) |
-| `/review-pr` | `github` · `context7` (framework APIs) · `aws-docs` (infra resources) |
+| `/review-pr` | `github` · `strapi-docs` · `aws-docs` · `terraform` · `context7` · `postgres` (auto-detects change types and fetches relevant docs) |
 | `/spike` | `postgres` · `posthog` (usage patterns) · `sequential-thinking` |
 | `/plan` | `sequential-thinking` · `github` |
 | `/raise-pr` | `github` |
