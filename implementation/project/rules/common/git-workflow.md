@@ -4,7 +4,13 @@
 
 - **Always create branches from `develop`** — ensure `develop` is up to date before branching
 - Base branch for all feature/fix/refactor branches: `develop`
-- Only hotfixes branch from `master` (production)
+- Only hotfixes branch from `main` (production)
+
+## Branch Naming
+
+- `feature/<issue-number>-<short-slug>` — new functionality
+- `fix/<issue-number>-<short-slug>` — bug fix
+- `refactor/<issue-number>-<short-slug>` — refactoring, no behavior change
 
 ## Commit Message Format
 
@@ -12,6 +18,8 @@ Use **conventional commits** format:
 
 ```
 <type>: <description>
+
+<optional body>
 ```
 
 **Style Guidelines:**
@@ -27,6 +35,7 @@ Examples:
 feat: add lab result history endpoint
 fix: correct MX record TTL in Route53
 refactor: extract care plan action builder
+chore: update Terraform provider versions
 ```
 
 ## Commit Strategy: Reversible Commits
@@ -39,14 +48,69 @@ refactor: extract care plan action builder
 - **Easy to revert** — If a commit needs to be undone, it should affect only one concern
 - **Clear boundaries** — Each commit should be independently reviewable and testable
 
+**Guidelines:**
+- One feature/change per commit (not multiple unrelated changes)
+- Separate commits for different domains (e.g., API changes vs UI changes vs infrastructure)
+- Separate commits for different concerns (e.g., feature implementation vs tests vs refactoring)
+- If a commit touches multiple files, ensure they're all part of the same logical change
+- Prefer multiple small commits over one large commit
+
+**Good Examples:**
+```
+feat: add lab result history endpoint
+test: add tests for lab result history endpoint
+docs: update API docs for lab result history
+
+fix: correct MX record TTL in Route53
+chore: update Terraform provider versions
+```
+
+**Bad Examples:**
+```
+feat: add lab result history and fix MX records and update docs
+# ❌ Multiple unrelated changes in one commit
+
+feat: implement lab result feature
+# ❌ Too large - includes API, tests, UI, and docs all together
+```
+
+**When to combine commits:**
+- Only when changes are tightly coupled and cannot be meaningfully separated
+- When reverting one would require reverting the other
+- When they represent a single atomic operation (e.g., adding a file and its tests together)
+
 ## Pull Request Workflow
 
-1. Title: `<type>: <short description>` (under 70 chars)
-2. **PR descriptions must follow the template** at `.github/pull_request_template.md`
+1. Analyze the **full commit history** (`git diff develop...HEAD`), not just the latest commit
+2. Title: `<type>: <short description>` (under 70 chars)
+3. **PR descriptions must follow the template** at `.github/pull_request_template.md`
    - Keep descriptions **simple** and straightforward
-3. Link the issue: `Closes #<number>`
-4. Base branch for PRs: `develop` (unless hotfix, then `master`)
+   - **Avoid em dashes** in PR descriptions
+   - Include ticket number, description, platform checkboxes, screenshots (if applicable), deployment info, and checklist
+4. Link the issue: `Closes #<number>`
+5. Base branch for PRs: `develop` (unless hotfix, then `main`)
+6. Run `/raise-pr` skill to verify all checks pass before opening
 
 ## Story Creation
 
-When creating new stories/issues, **must follow the template** at `.github/ISSUE_TEMPLATE/story-template.md`
+When creating new stories/issues, **must follow the template** at `.github/ISSUE_TEMPLATE/story-template.md`:
+- Include summary with "I want to... So that..." format
+- Add acceptance criteria with Given/When/Then structure
+- List dependencies and related PRs
+- Complete the Definition of Done checklist
+
+## Before Committing
+
+- Run `npm run lint:fix && npm run format` in affected packages
+- No `console.log` left in
+- No hardcoded secrets
+- Tests pass
+
+## Before Merging
+
+- CI checks green (lint, typecheck, build, Trivy)
+- Code review approved
+- **If infrastructure changed:**
+  - Check existing AWS resources for the target environment
+  - Verify Terraform S3 state backend is accessible and working correctly
+  - Review `terraform plan` to ensure no resources will be accidentally destroyed or duplicated

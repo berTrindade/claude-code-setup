@@ -201,6 +201,7 @@ Use for work-in-progress PRs that aren't ready for review yet:
 1. Review changes: `git diff develop...HEAD`
 2. Create draft PR: `gh pr create --base develop --draft --title "<type>: <description>" --body-file .github/pull_request_template.md`
 3. Fill in PR template (test plan can be "TBD" for drafts)
+   - **Important:** Keep the PR description **simple** and focused. **Avoid em dashes** in PR descriptions.
 4. Link to issue: `Closes #<issue-number>` or `Fixes #<issue-number>`
 5. Mark as ready later: `gh pr ready <number>` when ready for review
 
@@ -235,6 +236,7 @@ Use for work-in-progress PRs that aren't ready for review yet:
 
 **Conventions applied automatically:**
 - Commit messages use conventional commits (casual tone, no em dashes, no colons in description)
+- **PR descriptions must not use em dashes**
 - **Commits must be reversible** — small, focused commits organized by topic/domain
 - PR description follows the PR template structure and should be simple
 - All commits follow `.claude/rules/common/git-workflow.md` guidelines
