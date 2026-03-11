@@ -31,13 +31,13 @@ Fill in the PR template:
 - **How:** How was it implemented?
 - **Test Plan:** How was it tested? (can be "TBD" for draft PRs)
 
-**Important:** Keep the PR description **simple** and focused. **Avoid em dashes** in PR descriptions.
+**Important:** Keep the PR description **simple** and focused. **Avoid em dashes and semicolons** in PR descriptions.
 
 ## Step 3 — Apply Conventions
 
 Ensure:
-- Commit messages use conventional commits (casual tone, no em dashes, no colons in description)
-- **PR descriptions must not use em dashes**
+- Commit messages use conventional commits (casual tone, no em dashes, no semicolons, no colons in description)
+- **PR descriptions must not use em dashes or semicolons**
 - **Commits must be reversible** — small, focused commits organized by topic/domain
 - PR description follows the PR template structure and should be simple
 - All commits follow `.claude/rules/common/git-workflow.md` guidelines
