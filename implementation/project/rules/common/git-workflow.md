@@ -25,7 +25,6 @@ Use **conventional commits** format:
 **Style Guidelines:**
 - Use casual tone in descriptions
 - Avoid em dashes in commit messages
-- Avoid semicolons in commit messages
 - Avoid colons in the description text (the separator colon after type is required)
 - Keep descriptions concise and clear
 
@@ -86,8 +85,6 @@ feat: implement lab result feature
 2. Title: `<type>: <short description>` (under 70 chars)
 3. **PR descriptions must follow the template** at `.github/pull_request_template.md`
    - Keep descriptions **simple** and straightforward
-   - **Avoid em dashes** in PR descriptions
-   - **Avoid semicolons** in PR descriptions
    - Include ticket number, description, platform checkboxes, screenshots (if applicable), deployment info, and checklist
 4. Link the issue: `Closes #<number>`
 5. Base branch for PRs: `develop` (unless hotfix, then `main`)
@@ -95,9 +92,10 @@ feat: implement lab result feature
 
 ## Story Creation
 
-When creating new stories/issues, **must follow the template** at `.github/ISSUE_TEMPLATE/story-template.md`:
-- Include summary with "I want to... So that..." format
+When creating new stories/issues, use `/create-story` command or **must follow the template** at `.github/ISSUE_TEMPLATE/story-template.md`:
+- Include summary with "As a... I want... So that..." format
 - Add acceptance criteria with Given/When/Then structure
+- Include analytics events following `.claude/rules/product/analytics-naming.md`
 - List dependencies and related PRs
 - Complete the Definition of Done checklist
 

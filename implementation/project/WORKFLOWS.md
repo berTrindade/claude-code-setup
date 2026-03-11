@@ -5,6 +5,7 @@
 | Situation | Command | What happens |
 |-----------|---------|-------------|
 | New ticket from the board | `/start-ticket <n>` | Fetches issue → spikes codebase → creates branch → produces plan → waits |
+| Create user story | `/create-story <description>` | Reads analytics rules → references existing tickets → generates story template → waits for review → creates ticket |
 | Bug report (Slack, Sentry) | `/bug-fix` | Reproduce with failing test → root cause → minimal fix → verify |
 | Production is down | `/hotfix` | Branch from master → smallest fix → fast PR, no full verify cycle |
 | Reviewing a teammate's PR | `/review-pr <n>` | Reads PR + linked ticket → fetches latest code → auto-detects change types → invokes specialized agents → reviews with documentation → outputs Conventional Comments format → session-only (no GitHub posting) |
