@@ -9,7 +9,7 @@
 | Production is down | `/hotfix` | Branch from master → smallest fix → fast PR, no full verify cycle |
 | Reviewing a teammate's PR | `/review-pr <n>` | Reads PR + linked ticket → fetches latest code → auto-detects change types → invokes specialized agents → reviews with documentation → outputs Conventional Comments format → session-only (no GitHub posting) |
 | Check if PR comments were addressed | `/check-pr-comments <n>` | Reviews PR again → checks if previous review comments were addressed → verifies fixes → reports on addressed/pending/new issues |
-| Need to understand something | `/spike <question>` | Pure exploration, no code — ends with structured findings doc |
+| Need to understand something | `/spike <question>` | Explores codebase + external sources (articles, GitHub, MCP docs) → compares approaches → evaluates for your context → structured findings |
 | Before shipping | `/verify` → `/raise-pr` | All checks → lint/typecheck/tests/security → opens PR with full body |
 | Create draft PR (WIP) | `/draft-pr` | Creates draft PR without verification — use for work-in-progress PRs |
 | Architecture decision | `/plan` | Planner agent → phased plan → waits for your confirmation |
@@ -183,14 +183,32 @@ Use this when you've reviewed a PR before and want to verify if your comments we
 
 ---
 
-### Research Spike — `/spike how does care plan generation work`
+### Research Spike — `/spike how does care plan generation work` or `/spike should we use React Query`
 
-1. States the question clearly
-2. Explores codebase — no code written
-3. Traces data flow end-to-end
-4. Checks git history and recent PRs
-5. Outputs: what exists / what's missing / recommendation
-6. If implementation needed: `/start-ticket` or `/plan`
+Comprehensive research that explores both your codebase and external sources:
+
+1. **States the question clearly** — breaks down vague questions into sub-questions
+2. **Explores codebase** — traces data flow, identifies key files and dependencies
+3. **Checks history** — git log and recent PRs for context
+4. **Researches external sources:**
+   - **Web search** for articles, best practices, and case studies
+   - **GitHub search** for how others implement similar solutions
+   - **MCP servers** for official docs (AWS, Terraform, Strapi, React Native/Expo, PostgreSQL)
+5. **Compares approaches** — pros/cons, performance, maintenance, security
+6. **Evaluates for your context** — aligns with your stack, patterns, constraints
+7. **Outputs structured findings** with citations:
+   - What exists in codebase
+   - External research (articles, GitHub examples, official docs)
+   - Evaluation of approaches
+   - Recommendation with reasoning
+
+**Use cases:**
+- Understanding how something works in your codebase
+- Evaluating an AI-suggested approach
+- Comparing different solutions before implementing
+- Researching best practices for a new feature
+
+No code written. If implementation needed: `/start-ticket` or `/plan`.
 
 ---
 
@@ -201,7 +219,6 @@ Use for work-in-progress PRs that aren't ready for review yet:
 1. Review changes: `git diff develop...HEAD`
 2. Create draft PR: `gh pr create --base develop --draft --title "<type>: <description>" --body-file .github/pull_request_template.md`
 3. Fill in PR template (test plan can be "TBD" for drafts)
-   - **Important:** Keep the PR description **simple** and focused. **Avoid em dashes and semicolons** in PR descriptions.
 4. Link to issue: `Closes #<issue-number>` or `Fixes #<issue-number>`
 5. Mark as ready later: `gh pr ready <number>` when ready for review
 
@@ -235,8 +252,7 @@ Use for work-in-progress PRs that aren't ready for review yet:
 `/raise-pr` — full checklist → lint/types/tests/review → opens PR following `.github/pull_request_template.md` with What/Why/How/Test plan
 
 **Conventions applied automatically:**
-- Commit messages use conventional commits (casual tone, no em dashes, no semicolons, no colons in description)
-- **PR descriptions must not use em dashes or semicolons**
+- Commit messages use conventional commits (casual tone, no em dashes, no colons in description)
 - **Commits must be reversible** — small, focused commits organized by topic/domain
 - PR description follows the PR template structure and should be simple
 - All commits follow `.claude/rules/common/git-workflow.md` guidelines
@@ -320,7 +336,7 @@ Hooks are organized in `.claude/hooks/` directory structure. See `~/.claude/rule
 | `/bug-fix` | `posthog` (error scope) · `postgres` (data state) · `context7` · `playwright` (E2E repro) |
 | `/hotfix` | `posthog` (blast radius) · `postgres` (data check) · `aws` (live infra state) |
 | `/review-pr` | `github` · `strapi-docs` · `aws-docs` · `terraform` · `context7` · `postgres` (auto-detects change types and fetches relevant docs) |
-| `/spike` | `postgres` · `posthog` (usage patterns) · `sequential-thinking` |
+| `/spike` | `postgres` · `posthog` (usage patterns) · `sequential-thinking` · `aws-docs` · `terraform` · `strapi-docs` · `context7` · `github` (code search) · `web-search` |
 | `/plan` | `sequential-thinking` · `github` |
 | `/raise-pr` | `github` |
 | Mobile (Expo / RN) | `expo` (dev server) · `playwright` (E2E) · `context7` (RN/Expo docs) |
